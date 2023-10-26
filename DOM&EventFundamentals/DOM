@@ -1,0 +1,9 @@
+what is DOM?
+documnet object model. it is representation of html documnet
+. allows javascript ot access html elements and styles
+to manipulate them
+
+----> DOM is not part of javascript
+.....> DOM is part of web APIs.(Application programming
+Interfaces)
+---->the APIs can access through javascript

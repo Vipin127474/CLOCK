@@ -1,0 +1,159 @@
+*{
+   padding: 0;
+   margin: 0;
+   box-sizing: inherit;
+}
+
+html{
+font-size: 62.5%;
+box-sizing: border-box;
+}
+
+body{
+font-family: Georgia, 'Times New Roman', Times, serif;
+background-color: rgb(223, 14, 49);
+color: #333;
+/* font-size: 2rem; */
+font-weight: 400;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+main{
+    position: relative;
+    width: 100rem;
+    height: 60rem;
+    background-color: rgb(241, 188, 197);
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
+    display: flex;
+    backdrop-filter: blur(200px);
+    filter: blur();
+    border-radius: 10px;
+    overflow : hidden;
+}
+
+.player{
+    flex: 50%;
+    padding: 9rem;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    transition: all 0.75s;
+}
+
+.name{
+position: relative;
+font-size: 4rem;
+text-transform: uppercase;
+letter-spacing: 1px;
+word-spacing: 2px;
+font-weight:200;
+margin-bottom: 2rem;
+}
+
+.score{
+    font-size: 7rem;
+    margin-bottom: auto;
+    color: rgb(223, 14, 49);
+    font-weight: bolder;
+}
+
+.player-active{
+    background-color: rgb(112, 195, 216);
+}
+
+.player-active .name{
+font-weight:700;
+}
+
+.player-active .score{
+    font-weight:400;
+}
+
+.player-active .current{
+    opacity: 1;
+}
+
+.current{
+    font-size: 2rem;
+    background-color: rgb(223, 14, 49);
+    border-radius: 9px;
+    width: 75%;
+    text-align:center;
+    padding: 3rem;    
+    transition: all 0.75s;
+}
+
+.current-label{
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.current-score{
+    font-size: 4rem;
+    color: white;
+}
+
+
+/* absolute positioned elements */
+
+.btn{
+    position: absolute;
+    left: 48%;
+    background: none;
+    border: none;
+    text-transform: uppercase;
+    transform: translate(-50%);
+    color: black;
+    padding: 0.7rem 2.5rem;
+    border-radius: 5rem;
+    font-size: 2rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.4s;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    backdrop-filter: blur(10px);   
+}
+
+.btn::first-letter {
+    font-size: 2.4rem;
+    display: inline-block;
+    margin-right: 0.3rem;
+  }
+
+  .btn--new{
+      top: 5rem;
+  }
+   
+  .btn--roll{
+    top: 40rem;
+  }
+
+  .btn--hold{
+top: 46rem;
+  }
+
+   .dice-0{
+       position: absolute;
+       left: 45%;
+       top: 15rem;
+       height: 10rem;
+   }
+
+.player-winner{
+    background: linear-gradient(#e05db5, #9198e5);
+}
+.player-winner .name{
+    font-size: 5rem;
+    color: rgb(223, 14, 49)
+}
+
+
+   .hidden{
+       display: none;
+   }

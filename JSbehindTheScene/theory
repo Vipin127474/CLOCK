@@ -1,0 +1,388 @@
+--->basic definition:- javascript is a high level, object oriented, multi-paradigm
+programming language.
+
+--->advance definition:-js is a high level, prototype-based or object- oriented, 
+multi-paradigm, interpreted or just in time compiled,
+dynamic, single-threaded, garbage-collected programming lanaguage
+with first class funtions and a non-blocking event loop concurrency model.
+
+1. high level= in low-level language(like C angauge) developer has to manage resources manually but in javascript developer does not have to worry, everything happens automatically.
+
+2. garbage-collected= it is a tool that takes memory management away from us developers is garbage-collection 
+which is bascially an algorithm inside of javascript engine which automatically removes old, unused objects from the 
+computer memory in order not to clog it up with unnecessary stuff.
+
+3. interpreted or just in time compiled=
+
+4. multi-paradigm= an approach and mindset of strctruring code, which will direct your coding style and technique
+1.procedural programming(the one we have been using so far)
+2.object-oriented programming(oop)
+3.funtional programming(fp)
+
+we can classify paradigm as 
+1. imperative
+2. declarative
+
+
+5. prototype-based object-oriented= it is prototype-based object-oriented means
+almost everything in javascript is object except primitive values like number, string, boolean. but arrays, for example, are just object.
+
+basically, we create arrays from an array blueprint, which is like a template and this 
+is called the prototype.
+this prototype contains all the array methods and
+the arrays that we create in our code is then inherit the methods from the 
+blueprint so we can use them on an array.
+
+6.first-class funtions= in a lanaguage with first class funtions, funtions are simply treated as variables.
+we can pass them into other funtions, and return them from other funtions. beacause it allows us to a lot of powerful techniques
+and also allows for funtional programming
+
+
+example: function closeModal()
+{
+    modal.classList.add("hidden");
+    overlay.classList.add("hidden);
+};
+overlay.addEventListener("click, closeModal);
+
+here we pass closeModal funtion into the addEventListener funtion as if it was just a regular variable.
+
+7. dynamic= it is dynamically typed language that means we don't assign the datatypes to variables.Instead they only became known when javascript engine executes our code. Also the type of variable can easily be changed and as we reassign variables. and this is basically what dynamically typed means.
+
+
+
+8. single-threaded, 
+9.non-blocking event loop concurrency model=
+concurrency model= how the javascript engine handles multiple taks happening at the same time.
+
+why do we need that?
+
+javascript runs in one single thread, so it can only do one thing at a time and therefore we need a way of handling multiple things at the same time.
+
+by the way incomputing, a thread is a set of instructions that is executed in computer's CPU. So basically the thread is where our code is actuallly executed in machine's processor
+
+but what if there is long running task like fetching data from a remote server
+
+it sounds like that would block the single thread where the code is running. however, we want non-blocking behavior.
+
+how do we achieve the non blocking behavior
+
+we can achieve that using and event loop: takes long running tasks, executes them in the background, and puts them back in the main thread once they are finished.
+
+
+what is javascript engine?
+
+JS engine is a computer program that executes the javascript code.
+
+---->the most well known javascript engine is google's V-eight 
+
+the javacript can exist outside of browsers, for example, in node.js
+
+its components and how it works
+----> js contains a call stack and a heap
+
+call stack where our code is executed using something called execution contexts.
+
+heap is an unstructured memory pool which stores all the objects that our application needs.
+
+---->how the code is compiled to machine code?
+
+compilation vs interpretation
+
+compilation:entire code is converted into machine code at once, and written to a binary file that can be executed by a computer
+
+             compilation                      execution
+source code ----------------> portable file:---------------> running program 
+                              machine code
+
+
+interpretation: interpreter runs through the source code and executed it line by line.
+
+
+            execution line by line
+source code --------------------> program running
+
+now, javascript is an pure interpreted language 
+but the problem in interpreted languages is they are slower than the compiled languages
+
+this is okay for javascript but in modern javascript where we built fully fledged sites low performance is not acceptable.
+
+the modern javascript engine is a mix of compilation and interpretation which is called just in time.
+
+---->just in time=entire code converted into machine code at once, then executed immediately\
+
+             compilation                      execution
+source code ----------------> machine code---------------> running program 
+                              
+here no portable file executed and execution happens immediately after compilation
+
+
+                                          parsing 
+                                             |
+                                             |
+                                             |
+                       |-------------->   compilation
+                       |                     |
+                optimization                 |
+                      /|\                    |
+                       |<--------------   execution     
+
+
+AST: abstract syntax tree this works in entire code
+its work is to break the each line of code into pieces that are meaningful to the language like const or function keyword and then saving all the pieces into the tree in a structured way. this step checks the error in code and the resulting tree will later be used to generate the machine code.
+
+==== javascript runtime= 
+
+rutime in the browser
+
+
+it is a container which includes all the things that we need to use javascript( in this case in the browser)
+
+the heart of the javascript, runtime is always a javascript engine.
+
+wihtout an engine there is no runtime and there is no javascript.
+
+however the engine alone is not enough. in order to work properly, we also need access to the web APIs.
+
+Web APIs
+1.DOM
+2.Timers
+3.fetch API .....
+
+web APIs are funtionalities provided to the engine but which are not part of javascript.it is accessible on window object.
+
+typical javascript runtime also inclues a so called callback queue
+
+callback queue: this is a data structure that contains all the callback functions that are ready to be executed. 
+
+click, timer, data ....
+
+
+Example: callback funtions from DOM event listener
+
+event handler also called callback
+when the event happens for example a click, the callback funtions will be called.
+
+
+
+<!-- Execution context and the call stack-->
+how the code is executed?
+
+compilation
+     |
+     |
+     |
+creation of global execution context
+(for top-level code)      
+
+
+top-level code is a code that is not inside the function. so again, in the beginning only the code that is outside of functions will be executed.
+
+execution context= environment in which a piece of javascript is executed. stores all the necessary information for some code to be executed.such as local variables or arguments passed into a function. javascript code always runs inside an execution context.
+
+no matter how long the code There is only one global execution context.
+it is always there as the default context, and it's where top-level code will execute.
+compilation
+     |
+     |
+     |
+creation of global execution context
+(for top-level code)      
+     |
+     |
+     |
+execution of top-level code (inside global EC) 
+     |
+     |
+     |
+execution of functions and waiting for callbacks
+
+
+
+for each function call, a new execution context is created containing all the information that is necessary to run that function.
+
+
+what's inside execution context?
+
+1. variable environment
+    let const and var declaration
+    functions
+    arguments object
+
+2. scope chain
+    scope chain basically consists of references to variables(variable references) that are located outside of the current function.
+
+3. this keyword
+
+
+these all are generated in a creation phase which happens right before exection.
+
+execution context belonging to arrow function, do not get their own arguments keyword, nor do they get the this keyword.
+
+
+
+execution context
+----> scoping and scope chain 
+
+
+---scoping = how our program's variable are organized and accessed by the javascript engine. "where do variables live?" or
+"where can we access a certain variable, and where not?"
+
+
+---lexical scoping= means that the way variables are organized and accessed is entorely controlled by the placement of funtions and of blocks in the code.
+
+
+---scope= space and enironment in which a certain variable is declred(varible environment in case of functions). there is global scope, function scope, and block scope
+
+what's the difference between scope and variable environment?
+
+Then the answer is that for the case of functions, it's basically the same.
+
+
+in the scope we have:
+
+what i have explaing for variables also works the same for funtions.
+
+1. global scope=variable decalared in global scope are accessible everywhere.
+it is once more for top-level code;
+
+
+2. function scope= the variables which are accessible only inside of that function, not outside.
+it is also called local scope.
+
+3. block scope(ES6) = everything that is between curly braces like variales which are only accesible inside of that block.
+
+functions are also block scoped(only in strict mode)
+
+this only applies to let and const variables and var is function block.
+
+scope of variable= region of our code where a certain variable can be accessed.
+
+
+
+---->variable loopup in scope chain=
+
+when one scope needs to use a certain variable, but cannot find it in the current scope, it will loopup in the scope and see if it can find a variable in one of the parent scopes. if it can be, it will then use that variable.
+but the certain scope will never ever have accessed to the variable in inner scope.
+
+SCOPE CHAIN     VS     CALL STACK
+
+
+
+execution context
+----->variable environment 
+how variables are actually created in javascript.
+
+in javascript we have a mechanism called hositing.
+
+
+---->hoisting=hoisting bascially make some types of variables accessible/usable in the code before they are actually declared. "variables lifted to the top of their scope".           
+                   |
+                   |
+                   |behind the scene
+                   |
+                   |
+                   |
+before execution code is scanned for variable declaration, adn for each variable, a new property is created in the variavle environment object.                      
+
+hoisting does not work the same for all variable types.
+let's analyze the way hoisting works for
+
+
+                                     hoisted                 initial value                scope
+
+function declarations                yes                     actual function              block(in strict mode)
+
+var variables                        yes                      undefined                    function
+
+let and const variables              not                      <uninitialized>TDZ            block
+
+function expression and arrow                 depends if using var or let/const
+funtion
+
+
+the function declaration are hoisted and the initial value in the variable environment is set to actual function and the scope is block scope (but when strict mode is on).
+
+var variables are also hoisted but hoisting works in the different way here. 
+so unlike functions when we try to access a var variable before it's declaration in the code we don't get the declared value but we get undefined  
+
+
+in case of let and const variable are not hoisted. I mean, techinically they are actually hoisted but their value is basically set to uninitialized. So, there is no value to work with at all. And so in practice, it is as if hoisting was not happening at all.
+instead we say that these variables are places in a so called temporal dead zone or TDZ which makes it sp that we can't access the variables between the beinning od the scope and to place where the variables are declared.
+
+
+---->temporal dead zone, let and const
+
+
+const myName='vipin';
+
+if(myName==='vipin')
+{
+console.log(`jonas is a ${job}`);    //reference error
+const age=2034-1989;
+console.log(age);
+const job='teacher';
+console.log(x);  // x is not defined
+}
+
+
+here the console gives the rederence error for job variable because it is not accesible before decalaration.
+it is only accessible where variable is defined in the block scope. 
+
+
+
+---->why javascipt need the TDZ?
+
+---makes it easier to avoid and catch error: accessing variables before declaration is bad practice and should be avoided 
+
+---make const variables actually work the way they are supposed to do.
+
+
+--if hoisting creates so many problems, why does it exist in the first place?
+
+---using funcions before actual declaration
+
+---var hoisting is just a byproduct
+
+
+execution context
+---this keyword 
+special variable that is creatd for every execution context(every function). Takes the value of (points to) the "owner" of the 
+function in which the this keyword is used.
+
+this is NOT static. It depends on how the function is called, and its value is only assigned when the function is actually called.
+
+ways of calling function
+
+1. method
+ this= <object that is calling the method>
+
+example
+
+const vipin={
+     name='vipin',
+     year=2000,
+     calcAge: function(){
+          return 2037-this.year;
+     }
+}
+ vipin.calcAge; // 37
+
+--here calcAge is a method because it's a function attached to the vipin object
+
+-- the value of this keyword is vipin because that is the object is calling the method down there in the last line.
+
+
+2. simple function this=undefined
+
+3. arrow function this=<this is surrounding funtion(lexical this)>
+
+arrow function do not get their own function.
+
+4. Event listener this=<DOM element that the handler function is attached to>
+
+
+this does NOT point to the function iteself and also NOT point its variable environment
+
+
+5. new, call, apply, bind <later in the course>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="color-scheme" content="light">
+    <title>Document</title>
+    <style>
+      body{
+
+        background-color: black;
+      }
+   .container {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     height: 100vh; /* Optional: This centers the container vertically on the page */
+    }
+    
+img{
+  position: fixed;
+  top: 8rem;
+  left: 20%;
+  box-shadow: 5px 5px 50px rgb(44, 42, 42);
+}
+
+.clock {
+  margin-top: 8rem;
+  border: 2px solid rgb(14, 13, 13);
+  height:auto;
+  /* Add any clock-specific styling here */
+  font-size: 3rem;
+  font-weight: bolder;
+  color:rgba(255, 255, 0, 0.656);
+  -webkit-background-clip: text;
+	background-clip: text;
+	background-image: url('https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1698192000&semt=sph');
+	color: transparent;
+}
+h3{
+  -webkit-background-clip: text;
+	background-clip: text;
+	background-image: url('https://img.freepik.com/free-photo/painting-mountain-lake-with-mountain-background_188544-9126.jpg?size=626&ext=jpg&ga=GA1.1.386372595.1698192000&semt=sph');
+	color: transparent;
+  font-size: 4rem;
+  margin-top: 0%;
+}
+
+    </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/255px-Flag_of_India.svg.png" alt="">
+    <h3>India</h3>
+
+<span class="clock">05:00:00</span>
+</div>
+      
+    <script>
+const clock = document.querySelector('.clock');
+const tick=function(){
+  const time = new Date();
+  
+  const options ={
+          hour: 'numeric',
+          minute: 'numeric',
+          second:'numeric',
+          weekday:'long',
+        }        
+        
+        const inter = new Intl.DateTimeFormat(navigator.language, options).format(time);
+        clock.textContent = `${inter}`;
+
+}  
+  tick();
+const timer=setInterval(tick, 1000);
+
+
+    </script>
+</body>
+</html>

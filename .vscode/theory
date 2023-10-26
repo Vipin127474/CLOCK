@@ -1,0 +1,31 @@
+javascript is a hight level object oriented, multi paradigm
+programming language.
+
+high level language-: we don't need to worry about complex stuff like memory management.
+programming language-: instruct computer to do things.
+object-oriented-: based on objects, for storing most kinds of data.
+multi paradigm-: we can use different style of programming.
+
+role of javascript in web development
+
+programming language: building web applications.
+
+
+for dynamic and web application in the browser(front end apps)
+
+react, angular
+
+
+web applications on web servers(back end apps)
+
+node js
+
+
+native mobile applications 
+
+react, ionic
+
+
+native desktop applications
+
+electron.
